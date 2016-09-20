@@ -1,0 +1,75 @@
+From e5abf6d89d04fa000794cda6b4965f8b18bb10b2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Peter=20Z=C3=A1hradn=C3=ADk?= <peter.zahradnik@znik.sk>
+Date: Tue, 20 Sep 2016 18:19:40 +0100
+Subject: [PATCH] patch Makefile
+
+---
+ Makefile | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index b1897f1..c0cf632 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,8 +1,10 @@
+ VER=0.10
+ RELEASE=v$(VER)
+ 
+-CC = gcc
+-CFLAGS = -Wall -ggdb -O2
++CC ?= gcc
++CFLAGS ?= -Wall -ggdb -O2
++CPPFLAGS ?=
++LDFLAGS ?=
+ 
+ MANPAGES=duperemove.8 btrfs-extent-same.8 hashstats.8 show-shared-extents.8
+ 
+@@ -65,8 +67,8 @@ SBINDIR = $(PREFIX)/sbin
+ MANDIR = $(SHAREDIR)/man
+ 
+ .c.o:
+-	$(check) $(CFLAGS) -c $< -o $@ $(LIBRARY_FLAGS)
+-	$(CC) $(CFLAGS) -c $< -o $@ $(LIBRARY_FLAGS)
++	$(check) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ $(LIBRARY_FLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@ $(LIBRARY_FLAGS)
+ 
+ all: $(progs)
+ debug: CFLAGS += -fsanitize=address -ggdb3
+@@ -75,7 +77,7 @@ debug: $(progs)
+ #TODO: Replace this with an auto-dependency
+ $(objects): $(HEADERS)
+ duperemove: $(objects)
+-	$(CC) $(CFLAGS) $(objects) -o duperemove $(LIBRARY_FLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(objects) -o duperemove $(LIBRARY_FLAGS)
+ 
+ tarball: clean
+ 	mkdir -p $(TEMP_INSTALL_DIR)/$(DIST)
+@@ -84,7 +86,7 @@ tarball: clean
+ 	rm -fr $(TEMP_INSTALL_DIR)
+ 
+ btrfs-extent-same: btrfs-extent-same.c
+-	$(CC) $(CFLAGS) -o btrfs-extent-same btrfs-extent-same.c
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o btrfs-extent-same btrfs-extent-same.c
+ 
+ install: $(install_progs) $(MANPAGES)
+ 	mkdir -p -m 0755 $(DESTDIR)$(SBINDIR)
+@@ -97,13 +99,13 @@ install: $(install_progs) $(MANPAGES)
+ 	done
+ 
+ csum-test: $(csum_test_obj) csum-test.c
+-	$(CC) $(CFLAGS) $(csum_test_obj) -o csum-test csum-test.c  $(LIBRARY_FLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(csum_test_obj) -o csum-test csum-test.c  $(LIBRARY_FLAGS)
+ 
+ show-shared-extents: $(show_shared_obj) filerec.c
+-	$(CC) $(CFLAGS) -DFILEREC_TEST filerec.c $(show_shared_obj) -o show-shared-extents $(LIBRARY_FLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -DFILEREC_TEST filerec.c $(show_shared_obj) -o show-shared-extents $(LIBRARY_FLAGS)
+ 
+ hashstats: $(hashstats_obj) hashstats.c
+-	$(CC) $(CFLAGS) $(hashstats_obj) hashstats.c -o hashstats $(LIBRARY_FLAGS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $(hashstats_obj) hashstats.c -o hashstats $(LIBRARY_FLAGS)
+ 
+ clean:
+ 	rm -fr $(objects) $(progs) $(DIST_TARBALL) btrfs-extent-same filerec-test show-shared-extents hashstats csum-*.o *~
+-- 
+2.1.4
+
