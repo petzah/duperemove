@@ -1,0 +1,5 @@
+duperemove (0.10-1) unstable; urgency=low
+
+  * Initial release. (Closes: #784856)
+
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Tue, 20 Sep 2016 09:38:07 +0100
