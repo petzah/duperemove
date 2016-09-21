@@ -1,3 +1,9 @@
+duperemove (0.11~beta3-2) experimental; urgency=low
+
+  * Mangle upstream version numbering in watch file
+
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Wed, 21 Sep 2016 20:45:45 +0100
+
 duperemove (0.11~beta3-1) experimental; urgency=low
 
   * Bump to upstream version 0.11.beta3
