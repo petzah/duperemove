@@ -1,3 +1,11 @@
+From: =?utf-8?q?Peter_Z=C3=A1hradn=C3=ADk?= <peter.zahradnik@znik.sk>
+Date: Wed, 21 Sep 2016 19:15:37 +0100
+Subject: build
+
+---
+ Makefile | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
 diff --git a/Makefile b/Makefile
 index 86804b5..30ce0ee 100644
 --- a/Makefile
