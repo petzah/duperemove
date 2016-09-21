@@ -3,7 +3,7 @@ Maintainer: Peter Záhradník <peter.zahradnik@znik.sk>
 Section: admin
 Priority: optional
 Build-Depends: debhelper (>= 9), libglib2.0-dev, libgcrypt20-dev, libsqlite3-dev
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: https://github.com/markfasheh/duperemove
 Vcs-Git: https://github.com/petzah/duperemove.git
 Vcs-Browser: https://github.com/petzah/duperemove.git
