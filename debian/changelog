@@ -1,3 +1,9 @@
+duperemove (0.11~beta3-1) experimental; urgency=low
+
+  * Bump to upstream version 0.11.beta3
+
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Wed, 21 Sep 2016 19:45:15 +0100
+
 duperemove (0.10-2) unstable; urgency=medium
 
   * Bump Standards-Version
