@@ -1,3 +1,11 @@
+duperemove (0.10-2) unstable; urgency=medium
+
+  * Bump Standards-Version
+  * Add hardening
+  * Add debian/watch
+
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Wed, 21 Sep 2016 09:57:19 +0100
+
 duperemove (0.10-1) unstable; urgency=low
 
   * Initial release. (Closes: #784856)
