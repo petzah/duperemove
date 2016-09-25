@@ -1,8 +1,14 @@
-duperemove (0.10-3) unstable; urgency=medium
+duperemove (0.10-4) unstable; urgency=low
+
+  * Update debian/copyright
+
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Sun, 25 Sep 2016 21:40:55 +0100
+
+duperemove (0.10-3) unstable; urgency=low
 
   * Mangle upstream version numbering in watch file
 
- -- Peter Záhradník <peter.zahradnik@znik.sk>  Wed, 21 Sep 2016 20:54:31 +0100
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Sun, 25 Sep 2016 21:40:29 +0100
 
 duperemove (0.10-2) unstable; urgency=medium
 
