@@ -4,17 +4,16 @@ Upstream-Contact: Mark Fasheh <mfasheh@suse.de>
 Source: https://github.com/markfasheh/duperemove
 
 Files: *
-Copyright: 2007 Oracle
-           2013-2014 SUSE
+Copyright: 2013-2014 SUSE
 License: GPL-2
 
-Files: debian/*
-Copyright: 2016 Peter Záhradník <peter.zahradnik@znik.sk>
-License: Expat
+Files: list.h
+Copyright: 2007 Oracle
+License: GPL-2
 
-Files: rbtree.h
-Copyright: 1999  Andrea Arcangeli <andrea@suse.de>
-           2002  David Woodhouse <dwmw2@infradead.org>
+Files: rbtree.h rbtree.c
+Copyright: 1999 Andrea Arcangeli <andrea@suse.de>
+           2002 David Woodhouse <dwmw2@infradead.org>
 License: GPL-2+
 
 Files: util.c
@@ -23,9 +22,21 @@ Copyright: 2007 Oracle
            2014 SUSE except where noted
 License: GPL-2
 
-Files: bloom.h bloom.c xxhash.h xxhash.c
+Files: xxhash.h xxhash.c
 Copyright: 2012-2014 Yann Collet
 License: BSD-2-Clause
+
+Files: bloom.h bloom.c
+Copyright: 2012 Jyri J. Virkki
+License: BSD-2-Clause
+
+Files: sha256.h sha256.c sha256-config.h
+Copyright: 2006-2014 Brainspark B.V.
+License: GPL-2+
+
+Files: debian/*
+Copyright: 2016 Peter Záhradník <peter.zahradnik@znik.sk>
+License: Expat
 
 License: GPL-2
  This program is free software; you can redistribute it and/or
@@ -45,26 +56,22 @@ License: GPL-2
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
 License: GPL-2+
- This program is free software; you can redistribute it
- and/or modify it under the terms of the GNU General Public
- License as published by the Free Software Foundation; either
- version 2 of the License, or (at your option) any later
- version.
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
  .
- This program is distributed in the hope that it will be
- useful, but WITHOUT ANY WARRANTY; without even the implied
- warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.  See the GNU General Public License for more
- details.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ General Public License for more details.
  .
- You should have received a copy of the GNU General Public
- License along with this package; if not, write to the Free
- Software Foundation, Inc., 51 Franklin St, Fifth Floor,
- Boston, MA  02110-1301 USA
+ You should have received a copy of the GNU General Public License
+ along with this package; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA.
  .
- On Debian systems, the full text of the GNU General Public
- License version 2 can be found in the file
- `/usr/share/common-licenses/GPL-2'.
+ On Debian systems, the complete text of the GNU General
+ Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
 
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining
