@@ -4,17 +4,29 @@ Upstream-Contact: Mark Fasheh <mfasheh@suse.de>
 Source: https://github.com/markfasheh/duperemove
 
 Files: *
-Copyright: 2013-2014 SUSE
+Copyright: 2013-2016 SUSE
+License: GPL-2
+
+Files: filerec.c
+Copyright: 2016 SUSE
+Comment: Skeleton for filerec_count_shared function taken from
+ e2fsprogs.git/misc/filefrag.c which is Copyright 2003 by Theodore Ts'o and
+ released under the GPL.
 License: GPL-2
 
 Files: list.h
 Copyright: 2007 Oracle
 License: GPL-2
 
-Files: rbtree.h rbtree.c
+Files: rbtree.h rbtree.c rbtree_augmented.h
 Copyright: 1999 Andrea Arcangeli <andrea@suse.de>
            2002 David Woodhouse <dwmw2@infradead.org>
+           2012 Michel Lespinasse <walken@google.com>
 License: GPL-2+
+
+Files: interval_tree.c interval_tree_generic.h
+Copyright: 2012 Michel Lespinasse <walken@google.com>
+License: GPL-2
 
 Files: util.c
 Copyright: 2007 Oracle
@@ -26,9 +38,13 @@ Files: xxhash.h xxhash.c
 Copyright: 2012-2014 Yann Collet
 License: BSD-2-Clause
 
-Files: kernel.h
+Files: kernel.h interval_tree.h
 Copyright: 2016 Linus Torvalds and many others
 License: GPL-2
+
+Files: docs/stylesheets/github-light.css
+Copyright: 2016 GitHub, Inc.
+License: Expat
 
 Files: debian/*
 Copyright: 2016 Peter Záhradník <peter.zahradnik@znik.sk>
