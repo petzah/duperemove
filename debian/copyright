@@ -24,9 +24,13 @@ Copyright: 1999 Andrea Arcangeli <andrea@suse.de>
            2012 Michel Lespinasse <walken@google.com>
 License: GPL-2+
 
-Files: interval_tree.c interval_tree_generic.h
+Files: interval_tree.c
 Copyright: 2012 Michel Lespinasse <walken@google.com>
 License: GPL-2
+
+Files: interval_tree_generic.h
+Copyright: 2012 Michel Lespinasse <walken@google.com>
+License: GPL-2+
 
 Files: util.c
 Copyright: 2007 Oracle
