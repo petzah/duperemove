@@ -1,3 +1,11 @@
+duperemove (0.11-1) unstable; urgency=medium
+
+  * bump to latest 0.11 branch
+  * Description change
+  * Change binaries path from sbin to bin
+
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Fri, 30 Dec 2016 21:18:34 +0000
+
 duperemove (0.11~beta4-1) unstable; urgency=low
 
   * Initial release. (Closes: #784856)
