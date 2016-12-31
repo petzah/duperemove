@@ -2,7 +2,7 @@ duperemove (0.11-1) unstable; urgency=medium
 
   * Bump to latest release
   * Description change
-  * Add patch to change binaries path from sbin to bin
+  * Add patch to change binaries path from sbin to bin (Closes: #849759)
   * Cherry-pick O_RDONLY for root from kilobyte
 
  -- Peter Záhradník <peter.zahradnik@znik.sk>  Sat, 31 Dec 2016 09:07:28 +0000
