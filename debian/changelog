@@ -1,10 +1,11 @@
 duperemove (0.11-1) unstable; urgency=medium
 
-  * bump to latest 0.11 branch
+  * Bump to latest release
   * Description change
-  * Change binaries path from sbin to bin
+  * Add patch to change binaries path from sbin to bin
+  * Cherry-pick O_RDONLY for root from kilobyte
 
- -- Peter Záhradník <peter.zahradnik@znik.sk>  Fri, 30 Dec 2016 21:18:34 +0000
+ -- Peter Záhradník <peter.zahradnik@znik.sk>  Sat, 31 Dec 2016 09:07:28 +0000
 
 duperemove (0.11~beta4-1) unstable; urgency=low
 
