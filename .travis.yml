@@ -3,7 +3,4 @@ script: make
 compiler:
   - clang
   - gcc
-addons:
-  apt:
-    packages:
-    - linux-libc-dev
+dist: trusty
