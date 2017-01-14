@@ -10,3 +10,10 @@ script:
 branches:
   except:
     - /^debian\/\d/
+
+env:
+  global:
+    - TRAVIS_DEBIAN_DISTRIBUTION=sid
+  matrix:
+    - TRAVIS_DEBIAN_TARGET_ARCH=amd64
+    - TRAVIS_DEBIAN_TARGET_ARCH=armhf
