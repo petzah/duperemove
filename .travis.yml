@@ -13,10 +13,9 @@ branches:
 
 env:
   global:
-    - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS='--git-upstream-tag="v%\(version\)s-branch"'
-  matrix:
+    - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tag=v%\(version\)s-branch"
     - TRAVIS_DEBIAN_DISTRIBUTION=sid
-    - TRAVIS_DEBIAN_DISTRIBUTION=testing
+  matrix:
     - TRAVIS_DEBIAN_TARGET_ARCH=amd64
     - TRAVIS_DEBIAN_TARGET_ARCH=armhf
     - TRAVIS_DEBIAN_TARGET_ARCH=arm64
