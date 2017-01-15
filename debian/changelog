@@ -4,7 +4,7 @@ duperemove (0.11-1) unstable; urgency=medium
   * Description change
   * Add patch to change binaries path from sbin to bin (Closes: #849759)
   * Cherry-pick O_RDONLY for root from kilobyte
-  * Add patches to use atomic instead of sync by Radovan Birdic (Closes: #851261)
+  * Use atomic instead of sync patches by Radovan Birdic (Closes: #851261)
 
  -- Peter Záhradník <peter.zahradnik@znik.sk>  Sun, 15 Jan 2017 14:27:28 +0000
 
