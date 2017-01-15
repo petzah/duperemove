@@ -5,7 +5,7 @@ services:
   - docker
 
 script:
-  - wget -O- https://raw.githubusercontent.com/petzah/travis.debian.net/multiarch/script.sh | sh -
+  - wget -O- https://raw.githubusercontent.com/petzah/travis.debian.net/multiarch-pkgconfig/script.sh | sh -
 
 branches:
   except:
