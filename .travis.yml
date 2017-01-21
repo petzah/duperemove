@@ -3,7 +3,8 @@ dist: trusty
 language: generic
 
 script:
-  - wget -O- https://raw.githubusercontent.com/petzah/travistest/master/script.sh | sh -
+  - wget -O /tmp/script.sh https://raw.githubusercontent.com/petzah/travistest/master/script.sh
+  - /bin/bash /tmp/script.sh
 env:
   global:
     - TRAVIS_DEBIAN_GIT_BUILDPACKAGE_OPTIONS="--git-upstream-tag=v%\(version\)s-branch"
