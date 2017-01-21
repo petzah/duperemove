@@ -1,0 +1,55 @@
+From: Peter Zahradnik <peter.zahradnik@znik.sk>
+Date: Sun, 15 Jan 2017 14:22:08 +0000
+Subject: Use atomic insetead sync
+
+---
+ file_scan.c  | 2 +-
+ run_dedupe.c | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/file_scan.c b/file_scan.c
+index 617f166..2586614 100644
+--- a/file_scan.c
++++ b/file_scan.c
+@@ -660,7 +660,7 @@ static void csum_whole_file_init(GMutex **mutex, void *location,
+ 	unsigned long long cur_scan_files;
+ 	*mutex = g_dataset_get_data(location, "mutex");
+ 
+-	cur_scan_files = __sync_add_and_fetch(&_cur_scan_files, 1);
++	cur_scan_files = __atomic_fetch_add(&_cur_scan_files, 1, __ATOMIC_SEQ_CST);
+ 
+ 	printf("[%0*llu/%llu] (%05.2f%%) csum: %s\n",
+ 	       leading_spaces, cur_scan_files, files_to_scan,
+diff --git a/run_dedupe.c b/run_dedupe.c
+index 5c344c5..f11dd0d 100644
+--- a/run_dedupe.c
++++ b/run_dedupe.c
+@@ -476,7 +476,7 @@ static int extent_dedupe_worker(struct dupe_extents *dext,
+ 				uint64_t *fiemap_bytes, uint64_t *kern_bytes)
+ {
+ 	int ret;
+-	unsigned long long passno = __sync_add_and_fetch(&curr_dedupe_pass, 1);
++	unsigned long long passno = __atomic_fetch_add(&curr_dedupe_pass, 1, __ATOMIC_SEQ_CST);
+ 
+ 	ret = dedupe_extent_list(dext, fiemap_bytes, kern_bytes, passno);
+ 	if (ret) {
+@@ -659,7 +659,7 @@ static int block_dedupe_worker(struct block_dedupe_list *bdl,
+ {
+ 	int ret;
+ 	struct results_tree res;
+-	unsigned long long passno = __sync_add_and_fetch(&curr_dedupe_pass, 1);
++	unsigned long long passno =  __atomic_fetch_add(&curr_dedupe_pass, 1, __ATOMIC_SEQ_CST);
+ 
+ 	init_results_tree(&res);
+ 
+@@ -804,8 +804,8 @@ static int __push_blocks(struct hash_tree *hashes,
+ 						goto out;
+ 					bdl = NULL;
+ 
+-					__sync_add_and_fetch(
+-						&total_dedupe_passes, 1);
++					 __atomic_fetch_add(
++						&total_dedupe_passes, 1, __ATOMIC_SEQ_CST);
+ 					break;
+ 				}
+ 			}

@@ -1,3 +1,5 @@
 0001-Use-bin-instead-of-sbin-for-binaries.patch
 0002-Add-a-few-compiled-executables-to-.gitignore.patch
 0003-Open-the-target-O_RDONLY-for-root-for-BTRFS_IOC_FILE.patch
+0004-use-as-needed-and-add-latomic.patch
+0005-Use-atomic-insetead-sync.patch
