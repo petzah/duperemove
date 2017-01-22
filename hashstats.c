@@ -13,6 +13,7 @@
  * General Public License for more details.
  */
 
+#include <config.h>
 #include <limits.h>
 #include <stdio.h>
 #include <stdint.h>

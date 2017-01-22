@@ -15,6 +15,7 @@
  * Authors: Mark Fasheh <mfasheh@suse.de>
  */
 
+#include <config.h>
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
