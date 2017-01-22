@@ -27,6 +27,9 @@ AC_LANG([C])
 # If output variable CFLAGS was not already set, set it to -g -O2 for the GNU C compiler
 AC_PROG_CC
 
+# 64-bit file offsets, known as large-file support
+AC_SYS_LARGEFILE
+
 # Checks for libraries.
 PKG_PROG_PKG_CONFIG
 
