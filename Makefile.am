@@ -1,6 +1,11 @@
 AM_CFLAGS=$(GLIB_CFLAGS)
 AM_CFLAGS+=$(SQLITE3_CFLAGS)
 
+if DEBUG
+AM_CFLAGS+=-ggdb3 -fsanitize=address -fno-omit-frame-pointer
+AM_CPPFLAGS=-DDEBUG_BUILD
+endif
+
 bin_PROGRAMS=duperemove hashstats btrfs-extent-same csum-test show-shared-extents
 man8_MANS=duperemove.8 hashstats.8 btrfs-extent-same.8 show-shared-extents.8
 
