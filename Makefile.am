@@ -2,6 +2,7 @@ AM_CFLAGS=$(GLIB_CFLAGS)
 AM_CFLAGS+=$(SQLITE3_CFLAGS)
 
 bin_PROGRAMS=duperemove hashstats btrfs-extent-same csum-test show-shared-extents
+man8_MANS=duperemove.8 hashstats.8 btrfs-extent-same.8 show-shared-extents.8
 
 duperemove_SOURCES=duperemove.c debug.c csum.c file_scan.c run_dedupe.c dedupe.c filerec.c results-tree.c hash-tree.c util.c dbfile.c memstats.c find_dupes.c csum-murmur3.c btrfs-util.c csum-xxhash.c rbtree.c interval_tree.c list_sort.c xxhash.c
 duperemove_LDADD=$(GLIB_LIBS)
