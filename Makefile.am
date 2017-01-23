@@ -24,5 +24,5 @@ show_shared_extents_LDADD=$(GLIB_LIBS)
 show_shared_extents_CPPFLAGS=-DFILEREC_TEST
 
 EXTRA_DIST=$(man8_MANS)
-EXTRA_DIST+=docs README.md LICENSE.xxhash LICENSE SubmittingPatches rbtree.txt
+EXTRA_DIST+=docs README.md LICENSE.xxhash LICENSE SubmittingPatches rbtree.txt README.autotools
 EXTRA_DIST+=stats.c csum-sha256.c  # include code which is not being compiled

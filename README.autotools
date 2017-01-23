@@ -1,0 +1,7 @@
+1. autoreconf -i
+2. ./configure OR
+   ./configure --enable-debug  for DEBUG
+   To install to different path use --prefix=/path
+3. make
+4. make install
+5. make dist  OR make distcheck
