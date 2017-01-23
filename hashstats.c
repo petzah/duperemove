@@ -13,7 +13,10 @@
  * General Public License for more details.
  */
 
+#ifdef HAVE_CONFIG_H
 #include <config.h>
+#endif
+
 #include <limits.h>
 #include <stdio.h>
 #include <stdint.h>
