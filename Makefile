@@ -1,4 +1,4 @@
-VER=0.11.beta4
+VER=0.11.1
 RELEASE=v$(VER)
 
 CC ?= gcc
@@ -99,6 +99,14 @@ install: $(install_progs) $(MANPAGES)
 	mkdir -p -m 0755 $(DESTDIR)$(MANDIR)/man8
 	for man in $(MANPAGES); do \
 		install -m 0644 $$man $(DESTDIR)$(MANDIR)/man8; \
+	done
+
+uninstall:
+	for prog in $(install_progs); do \
+		rm -f $(DESTDIR)$(SBINDIR)/$$prog; \
+	done
+	for man in $(MANPAGES); do \
+		rm -f $(DESTDIR)$(MANDIR)/man8/$$man; \
 	done
 
 csum-test: $(csum_test_obj) csum-test.c

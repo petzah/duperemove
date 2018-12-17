@@ -8,7 +8,7 @@ duperemove \- Find duplicate extents and print them to stdout
 \fBduperemove\fR is a simple tool for finding duplicated extents and
 submitting them for deduplication. When given a list of files it will
 hash their contents on a block by block basis and compare those hashes
-to each other, finding and categorizing blocks that match each
+to each other, finding and categorizing extents that match each
 other. When given the \fB-d\fR option, \fBduperemove\fR will submit
 those extents for deduplication using the Linux kernel extent-same
 ioctl.
@@ -35,6 +35,10 @@ candidates for deduplication. As a result, readonly mode is useful for
 seeing what duperemove might do when run with \fB-d\fR. The output could
 also be used by some other software to submit the extents for
 deduplication at a later time.
+
+It is important to note that this mode will not print out \fBall\fR
+instances of matching extents, just those it would consider for
+deduplication.
 
 Generally, duperemove does not concern itself with the underlying
 representation of the extents it processes. Some of them could be
@@ -74,6 +78,10 @@ users on readonly snapshots.
 .TP
 \fB\-h\fR
 Print numbers in human-readable format.
+
+.TP
+\fB\-q\fR
+Quiet mode. Duperemove will only print errors and a short summary of any dedupe.
 
 .TP
 \fB\--hashfile=hashfile\fR
@@ -171,25 +179,21 @@ the dedupe stage to optimize out already deduped extents as well as to
 provide an estimate of the space saved after dedupe operations are
 complete.
 
-Unfortunately, some versions of Btrfs exhibit extrmely poor
+Unfortunately, some versions of Btrfs exhibit extremely poor
 performance in fiemap as the number of references on a file extent
 goes up. If you are experiencing the dedupe phase slowing down
 or 'locking up' this option may give you a significant amount of
 performance back.
 
-\fBNote:\fR This does not turn off all useage of fiemap, to disable
+\fBNote:\fR This does not turn off all usage of fiemap, to disable
 fiemap during the file scan stage, you will also want to use the
 \fB--lookup-extents=no\fR option.
 .TP
 \fB[no]block\fR
-Defaults to \fBon\fR. Duperemove submits duplicate blocks directly to
-the dedupe engine.
-
-Duperemove can optionally optimize the duplicate block lists into
-larger extents prior to dedupe submission. The search algorithm used
-for this however has a very high memory and cpu overhead, but may
-reduce the number of extent references created during dedupe. If you'd
-like to try this, run with 'noblock'.
+Defaults to \fBoff\fR. Dedupe by block - don't optimize our data into
+extents before dedupe. Generally this is undesirable as it will
+greatly increase the total number of dedupe requests. There is also a
+larger potential for file fragmentation.
 .RE
 
 .TP
@@ -294,7 +298,7 @@ have success by breaking up the input data set into smaller pieces.
 
 When using a hashfile, duperemove will only store duplicate hashes in
 memory. During normal operation then the hash tree will make up the
-largest portion of dupremoves memory usage. As of Duperemove v0.11
+largest portion of duperemove memory usage. As of Duperemove v0.11
 hash entries are 88 bytes in size. If you know the number of duplicate
 blocks in your data set you can get a rough approximation of memory
 usage by multiplying with the hash entry size.
@@ -380,9 +384,9 @@ sizes may save more space at the cost of increased fragmentation.
 .SH "NOTES"
 Deduplication is currently only supported by the \fIbtrfs\fR and \fIxfs\fR filesystem.
 
-The Duperemove project page can be found at http://github.com/markfasheh/duperemove
+The Duperemove project page can be found at https://github.com/markfasheh/duperemove
 
-There is also a wiki at http://github.com/markfasheh/duperemove/wiki
+There is also a wiki at https://github.com/markfasheh/duperemove/wiki
 
 .SH "SEE ALSO"
 .BR hashstats(8)

@@ -63,7 +63,7 @@ static void print_extent_search_status(unsigned long long processed)
 	int width = 40;
 	float progress;
 
-	if (!stdout_is_tty || verbose || debug)
+	if (!stdout_is_tty || verbose || debug || quiet)
 		return;
 
 	progress = (float) processed / search_total;
@@ -94,7 +94,7 @@ static void print_extent_search_status(unsigned long long processed)
 static void clear_extent_search_status(unsigned long long processed,
 				       int err)
 {
-	if (!stdout_is_tty || verbose || debug)
+	if (!stdout_is_tty || verbose || debug || quiet)
 		return;
 
 	if (err)
@@ -213,7 +213,7 @@ static int walk_dupe_block(struct filerec *orig_file,
 	struct file_block *orig = orig_file_block;
 	struct file_block *block = walk_file_block;
 	struct file_block *start[2] = { orig, block };
-	struct file_block *end[2];
+	struct file_block *end[2] = { NULL, NULL };
 	struct running_checksum *csum;
 	unsigned char match_id[DIGEST_LEN_MAX] = {0, };
 	uint64_t orig_blkno, walk_blkno;
@@ -446,8 +446,8 @@ static int find_all_dupes_filewise(struct hash_tree *tree,
 	GThreadPool *pool = NULL;
 	unsigned long long pushed = 0;
 
-	printf("Hashing completed. Using %u threads to calculate duplicate "
-	       "extents. This may take some time.\n", cpu_threads);
+	qprintf("Hashing completed. Using %u threads to calculate duplicate "
+		"extents. This may take some time.\n", cpu_threads);
 
 	pool = g_thread_pool_new((GFunc) find_dupes_worker, res,
 				 cpu_threads, TRUE, &err);

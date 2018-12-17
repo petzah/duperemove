@@ -56,7 +56,7 @@ unsigned int blocksize = DEFAULT_BLOCKSIZE;
 int run_dedupe = 0;
 int recurse_dirs = 0;
 int one_file_system = 1;
-int block_dedupe = 1;
+int block_dedupe = 0;
 int dedupe_same_file = 0;
 int skip_zeroes = 0;
 
@@ -300,6 +300,7 @@ enum {
 	SKIP_ZEROES_OPTION,
 	FDUPES_OPTION,
 	DEDUPE_OPTS_OPTION,
+	QUIET_OPTION,
 };
 
 static int add_files_from_stdin(int fdupes)
@@ -383,13 +384,14 @@ static int parse_options(int argc, char **argv, int *filelist_idx)
 		{ "skip-zeroes", 0, NULL, SKIP_ZEROES_OPTION },
 		{ "fdupes", 0, NULL, FDUPES_OPTION },
 		{ "dedupe-options=", 1, NULL, DEDUPE_OPTS_OPTION },
+		{ "quiet", 0, NULL, QUIET_OPTION },
 		{ NULL, 0, NULL, 0}
 	};
 
 	if (argc < 2)
 		return 1;
 
-	while ((c = getopt_long(argc, argv, "Ab:vdDrh?xLR:", long_ops, NULL))
+	while ((c = getopt_long(argc, argv, "Ab:vdDrh?xLR:q", long_ops, NULL))
 	       != -1) {
 		switch (c) {
 		case 'A':
@@ -480,6 +482,10 @@ static int parse_options(int argc, char **argv, int *filelist_idx)
 			rm_only_opt = 1;
 			add_rm_file(optarg);
 			break;
+		case QUIET_OPTION:
+		case 'q':
+			quiet = 1;
+			break;
 		case HELP_OPTION:
 			help_option = 1;
 		case '?':
@@ -565,12 +571,12 @@ out_nofiles:
 
 static void print_header(void)
 {
-	printf("Using %uK blocks\n", blocksize / 1024);
-	printf("Using hash: %s\n", csum_mod->name);
+	vprintf("Using %uK blocks\n", blocksize / 1024);
+	vprintf("Using hash: %s\n", csum_mod->name);
 #ifdef	DEBUG_BUILD
 	printf("Debug build, performance may be impacted.\n");
 #endif
-	printf("Gathering file list...\n");
+	qprintf("Gathering file list...\n");
 }
 
 static int create_update_hashfile(int argc, char **argv, int filelist_idx)
@@ -630,7 +636,7 @@ static int create_update_hashfile(int argc, char **argv, int filelist_idx)
 		if (ret)
 			goto out;
 	} else {
-		printf("Adding files from database for hashing.\n");
+		qprintf("Adding files from database for hashing.\n");
 
 		ret = dbfile_scan_files();
 		if (ret)
@@ -727,8 +733,8 @@ int main(int argc, char **argv)
 			 * This option is for isolating the file scan
 			 * stage. Exit the program now.
 			 */
-			printf("Hashfile \"%s\" written, exiting.\n",
-			       serialize_fname);
+			qprintf("Hashfile \"%s\" written, exiting.\n",
+				serialize_fname);
 			goto out;
 		}
 		break;
@@ -757,7 +763,7 @@ int main(int argc, char **argv)
 		break;
 	}
 
-	printf("Loading only duplicated hashes from hashfile.\n");
+	qprintf("Loading only duplicated hashes from hashfile.\n");
 
 	ret = dbfile_load_hashes(&dups_tree);
 	if (ret)
